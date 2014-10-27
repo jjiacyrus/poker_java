@@ -1,12 +1,11 @@
-package com.model;
+package com;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ RankTest.class, HandTest.class, SuitTest.class, CardTest.class,
-		NullHandTest.class })
+@SuiteClasses({ WatchmanTest.class })
 public class TestSuite {
 
 }

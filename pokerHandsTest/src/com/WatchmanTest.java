@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,6 +26,37 @@ public class WatchmanTest {
 		File testRoot = new File("./src");
 		File[] children = testRoot.listFiles();
 		checkSuitesAreInAllTests(children);
+	}
+
+	@Test
+	public void testAllClassesHaveTestClasses() throws Exception {
+		File srcRoot = new File("../pokerHands/src");
+		File[] children = srcRoot.listFiles();
+		checkAllClassesHaveTests(children);
+	}
+
+	private void checkAllClassesHaveTests(File[] children) throws Exception {
+		for (File file : children) {
+			if (file.isDirectory()) {
+				checkAllClassesHaveTests(file.listFiles());
+			} else {
+
+				String classPath = getProductionClassPath(file);
+				ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+				Class<?> fileClass = classLoader.loadClass(classPath);
+				if (!fileClass.isInterface()
+						&& !Modifier.isAbstract(fileClass.getModifiers())) {
+					try {
+						Class<?> testClass = classLoader.loadClass(classPath
+								+ "Test");
+						assertTrue("Your test class has no test methods",
+								isTestClass(testClass));
+					} catch (ClassNotFoundException e) {
+						fail("There was no Unit Test for " + file.getName());
+					}
+				}
+			}
+		}
 	}
 
 	private void checkSuitesAreInAllTests(File[] children) throws Exception {
@@ -51,7 +83,7 @@ public class WatchmanTest {
 			if (file.isDirectory()) {
 				checkTestFilesAreInSuite(file.listFiles());
 			} else {
-				String classPath = getClassPath(file);
+				String classPath = getTestClassPath(file);
 				Class<?> fileClass = ClassLoader.getSystemClassLoader()
 						.loadClass(classPath);
 				if (isTestClass(fileClass)) {
@@ -91,7 +123,13 @@ public class WatchmanTest {
 		return ClassLoader.getSystemClassLoader().loadClass(suitePath);
 	}
 
-	private String getClassPath(File file) throws Exception {
+	private String getProductionClassPath(File file) {
+		String fileAndPackage = file.getPath().replace(".java", "");
+		String removedSrc = fileAndPackage.replace("../pokerHands/src/", "");
+		return removedSrc.replace("/", ".");
+	}
+
+	private String getTestClassPath(File file) throws Exception {
 		String fileAndPackage = file.getPath().replace(".java", "");
 		String removedSrc = fileAndPackage.replace("./src/", "");
 		return removedSrc.replace("/", ".");

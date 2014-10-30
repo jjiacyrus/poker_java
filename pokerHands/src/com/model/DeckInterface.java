@@ -7,4 +7,6 @@ public interface DeckInterface {
 	public List<CardInterface> getAllCards();
 
 	public CardInterface dealCard();
+
+	public abstract void shuffle();
 }

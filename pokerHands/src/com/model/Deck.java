@@ -48,6 +48,7 @@ public class Deck implements DeckInterface {
 		return NullCard.NULL;
 	}
 
+	@Override
 	public void shuffle() {
 		cardIndex = 0;
 		Collections.shuffle(allCards);

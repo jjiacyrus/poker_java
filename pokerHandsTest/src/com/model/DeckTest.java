@@ -13,7 +13,7 @@ public class DeckTest {
 
 	@Test
 	public void testGetAllCards() throws Exception {
-		Deck deck = new Deck();
+		DeckInterface deck = new Deck();
 		List<CardInterface> allCards = deck.getAllCards();
 		List<Suit> allNonNullSuits = getNonNullSuits();
 		List<Rank> allNonNullRanks = getNonNullRanks();
@@ -42,7 +42,7 @@ public class DeckTest {
 
 	@Test
 	public void testShuffleWillChangeOrderOfAllCards() throws Exception {
-		Deck deck = new Deck();
+		DeckInterface deck = new Deck();
 		List<CardInterface> allCards = new ArrayList<CardInterface>(
 				deck.getAllCards());
 		deck.shuffle();
@@ -54,7 +54,7 @@ public class DeckTest {
 
 	@Test
 	public void testDealCardWillGiveYouTheTopCardOffTheDeckUntilYouRunOutOfCards() {
-		Deck deck = new Deck();
+		DeckInterface deck = new Deck();
 		for (Suit suit : getNonNullSuits()) {
 			for (Rank rank : getNonNullRanks()) {
 				assertEquals(new Card(rank, suit), deck.dealCard());
@@ -67,7 +67,7 @@ public class DeckTest {
 
 	@Test
 	public void testShuffleWillReplenishTheDeck() throws Exception {
-		Deck deck = new Deck();
+		DeckInterface deck = new Deck();
 
 		for (int i = 0; i < 52; i++) {
 			deck.dealCard();

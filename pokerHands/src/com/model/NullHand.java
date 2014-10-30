@@ -11,7 +11,7 @@ public class NullHand implements HandInterface {
 	}
 
 	@Override
-	public List<Card> getCards() {
+	public List<CardInterface> getCards() {
 		return Arrays.asList();
 	}
 

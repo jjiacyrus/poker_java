@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.model.Card;
+import com.model.CardInterface;
 import com.model.Hand;
 import com.model.HandInterface;
 import com.model.Rank;
@@ -77,7 +78,7 @@ public class EulerLineParserTest {
 	}
 
 
-	private void checkCard(Suit suit, Rank rank, Card card) {
+	private void checkCard(Suit suit, Rank rank, CardInterface card) {
 		assertEquals(new Card(rank, suit), card);
 	}
 }

@@ -9,18 +9,20 @@ import java.util.Map.Entry;
 
 public class Hand implements HandInterface {
 
-	private List<Card> cards;
+	private List<CardInterface> cards;
 	private HashMap<Integer, List<Rank>> countToRanks;
 
-	public Hand(Card card1, Card card2, Card card3, Card card4, Card card5) {
-		List<Card> cards = Arrays.asList(card1, card2, card3, card4, card5);
+	public Hand(CardInterface card1, CardInterface card2, CardInterface card3,
+			CardInterface card4, CardInterface card5) {
+		List<CardInterface> cards = Arrays.asList(card1, card2, card3, card4,
+				card5);
 		Collections.sort(cards);
 		this.cards = cards;
 		countToRanks = createCountRankHash(cards);
 	}
 
 	@Override
-	public List<Card> getCards() {
+	public List<CardInterface> getCards() {
 		return cards;
 	}
 
@@ -57,7 +59,7 @@ public class Hand implements HandInterface {
 	public boolean isStraight() {
 		int currentRank = cards.get(0).getRank().value();
 		for (int i = 1; i < 5; i++) {
-			Card card = cards.get(i);
+			CardInterface card = cards.get(i);
 			if (card.getRank().value() == currentRank + 1) {
 				currentRank = card.getRank().value();
 			} else {
@@ -70,7 +72,7 @@ public class Hand implements HandInterface {
 	@Override
 	public boolean isFlush() {
 		Suit suit = cards.get(0).getSuit();
-		for (Card card : cards) {
+		for (CardInterface card : cards) {
 			if (card.getSuit() != suit) {
 				return false;
 			}
@@ -84,7 +86,8 @@ public class Hand implements HandInterface {
 		return singleCardValues.get(singleCardValues.size() - 1);
 	}
 
-	private HashMap<Integer, List<Rank>> createCountRankHash(List<Card> cards) {
+	private HashMap<Integer, List<Rank>> createCountRankHash(
+			List<CardInterface> cards) {
 		HashMap<Rank, Integer> rankToCount = createRankToCountMap(cards);
 		HashMap<Integer, List<Rank>> countToRankMap = new HashMap<Integer, List<Rank>>();
 		for (Entry<Rank, Integer> entry : rankToCount.entrySet()) {
@@ -103,9 +106,10 @@ public class Hand implements HandInterface {
 		return countToRankMap;
 	}
 
-	private HashMap<Rank, Integer> createRankToCountMap(List<Card> cards) {
+	private HashMap<Rank, Integer> createRankToCountMap(
+			List<CardInterface> cards) {
 		HashMap<Rank, Integer> rankToCountMap = new HashMap<Rank, Integer>();
-		for (Card card : cards) {
+		for (CardInterface card : cards) {
 			Rank rank = card.getRank();
 			if (rankToCountMap.containsKey(rank)) {
 				Integer count = rankToCountMap.get(rank);

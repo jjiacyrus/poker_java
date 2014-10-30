@@ -3,6 +3,7 @@ package com.game.euler;
 import java.util.ArrayList;
 
 import com.model.Card;
+import com.model.CardInterface;
 import com.model.Hand;
 import com.model.Rank;
 import com.model.Suit;
@@ -12,11 +13,11 @@ public class EulerLineParser implements LineParserInterface {
 	@Override
 	public TwoHandsInterface parseLine(String line) {
 		String[] split = line.split(" ");
-		ArrayList<Card> cards = new ArrayList<Card>();
+		ArrayList<CardInterface> cards = new ArrayList<CardInterface>();
 		for (String string : split) {
 			Rank rank = Rank.findByAbbreviation(string.charAt(0));
 			Suit suit = Suit.findByAbbreviation(string.charAt(1));
-			if(rank.equals(Rank.NULL) || suit.equals(Suit.NULL)){
+			if (rank.equals(Rank.NULL) || suit.equals(Suit.NULL)) {
 				return NullTwoHands.NULL;
 			}
 			cards.add(new Card(rank, suit));

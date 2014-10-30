@@ -4,19 +4,19 @@ import java.util.List;
 
 public interface HandInterface {
 
-	public List<Card> getCards();
-	
+	public List<CardInterface> getCards();
+
 	public Rank getHighCardRank();
-	
+
 	public List<Rank> getPairRanks();
-	
+
 	public Rank getThreeOfAKindRank();
-	
+
 	public Rank getFourOfAKindRank();
-	
+
 	public boolean isStraight();
-	
+
 	public boolean isFlush();
-	
+
 	public Rank getKickerValue();
 }

@@ -3,7 +3,7 @@ package com.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.model.Card;
+import com.model.CardInterface;
 import com.model.HandInterface;
 import com.model.Rank;
 
@@ -42,7 +42,7 @@ public class MockHand implements HandInterface {
 	}
 
 	@Override
-	public List<Card> getCards() {
+	public List<CardInterface> getCards() {
 		return null;
 	}
 

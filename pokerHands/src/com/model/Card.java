@@ -1,6 +1,6 @@
 package com.model;
 
-public class Card implements  Comparable<Card> {
+public class Card implements CardInterface {
 
 	private Rank rank;
 	private Suit suit;
@@ -10,10 +10,12 @@ public class Card implements  Comparable<Card> {
 		this.suit = suit;
 	}
 
+	@Override
 	public Rank getRank() {
 		return rank;
 	}
 
+	@Override
 	public Suit getSuit() {
 		return suit;
 	}
@@ -29,9 +31,9 @@ public class Card implements  Comparable<Card> {
 	}
 
 	@Override
-	public int compareTo(Card o) {
-		int compare = this.rank.compareTo(o.rank);
+	public int compareTo(CardInterface o) {
+		int compare = this.rank.compareTo(o.getRank());
 		return compare;
-		
+
 	}
 }

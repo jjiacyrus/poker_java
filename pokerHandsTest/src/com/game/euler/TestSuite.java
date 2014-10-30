@@ -5,8 +5,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ EulerHandGeneratorTest.class, EulerLineParserTest.class, 
-		EulerResultsTest.class, NullTwoHandsTest.class, TwoHandsTest.class })
+@SuiteClasses({ EulerHandGeneratorTest.class, EulerLineParserTest.class,
+		EulerEvaluatorTest.class, EulerResultsTest.class,
+		NullTwoHandsTest.class, TwoHandsTest.class })
 public class TestSuite {
 
 }

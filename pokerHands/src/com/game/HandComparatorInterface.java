@@ -1,8 +1,8 @@
 package com.game;
 
-import com.model.HandInterface;
+import com.game.euler.TwoHandsInterface;
 
 public interface HandComparatorInterface {
 
-	public Winner determineWinner(HandInterface hand1, HandInterface hand2);
+	public Winner determineWinner(TwoHandsInterface twoHands);
 }

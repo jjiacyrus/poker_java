@@ -1,6 +1,6 @@
 package com.game;
 
-import com.model.HandInterface;
+import com.game.euler.TwoHandsInterface;
 
 public class HandComparator implements HandComparatorInterface {
 
@@ -11,16 +11,16 @@ public class HandComparator implements HandComparatorInterface {
 	}
 
 	@Override
-	public Winner determineWinner(HandInterface hand1, HandInterface hand2) {
-		HandValueInterface hand1Value = handEvaluator.evaluateHand(hand1);
-		HandValueInterface hand2Value = handEvaluator.evaluateHand(hand2);
-		if(hand1Value.value() > hand2Value.value()){
+	public Winner determineWinner(TwoHandsInterface twoHands) {
+		HandValueInterface hand1Value = handEvaluator.evaluateHand(twoHands.getHand1());
+		HandValueInterface hand2Value = handEvaluator.evaluateHand(twoHands.getHand2());
+		if (hand1Value.value() > hand2Value.value()) {
 			return Winner.PLAYER_ONE;
 		}
-		if(hand2Value.value() > hand1Value.value()){
+		if (hand2Value.value() > hand1Value.value()) {
 			return Winner.PLAYER_TWO;
 		}
-		return hand1Value.getTieResolver().resolve(hand1, hand2);
+		return hand1Value.getTieResolver().resolve(twoHands.getHand1(), twoHands.getHand2());
 	}
 
 	public HandEvaluatorInterface getEvaluator() {

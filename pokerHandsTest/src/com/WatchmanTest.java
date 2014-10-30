@@ -1,6 +1,7 @@
 package com;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.lang.annotation.Annotation;
@@ -17,22 +18,19 @@ public class WatchmanTest {
 	@Test
 	public void testAllTestsAreInSuites() throws Exception {
 		File testRoot = new File("./src");
-		File[] children = testRoot.listFiles();
-		checkTestFilesAreInSuite(children);
+		checkTestFilesAreInSuite(testRoot.listFiles());
 	}
 
 	@Test
 	public void testAllTestSuitesAreInAllTests() throws Exception {
 		File testRoot = new File("./src");
-		File[] children = testRoot.listFiles();
-		checkSuitesAreInAllTests(children);
+		checkSuitesAreInAllTests(testRoot.listFiles());
 	}
 
 	@Test
 	public void testAllClassesHaveTestClasses() throws Exception {
 		File srcRoot = new File("../pokerHands/src");
-		File[] children = srcRoot.listFiles();
-		checkAllClassesHaveTests(children);
+		checkAllClassesHaveTests(srcRoot.listFiles());
 	}
 
 	private void checkAllClassesHaveTests(File[] children) throws Exception {

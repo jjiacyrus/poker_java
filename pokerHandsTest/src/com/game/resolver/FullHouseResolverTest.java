@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+import com.TestHelper;
 import com.game.MockHand;
 import com.game.Winner;
 import com.model.Rank;
@@ -21,8 +22,8 @@ public class FullHouseResolverTest {
 	@Test
 	public void testIsSingleton() throws Exception {
 		assertEquals(0, FullHouseResolver.class.getConstructors().length);
-		assertEquals(FullHouseResolver.class,
-				FullHouseResolver.SINGLETON.getClass());
+		TestHelper.assertIsOfTypeAndGet(FullHouseResolver.class,
+				FullHouseResolver.SINGLETON);
 	}
 
 	@Test

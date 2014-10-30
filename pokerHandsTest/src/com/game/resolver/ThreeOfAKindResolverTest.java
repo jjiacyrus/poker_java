@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.TestHelper;
 import com.game.MockHand;
 import com.game.Winner;
 import com.model.Rank;
@@ -18,8 +19,8 @@ public class ThreeOfAKindResolverTest {
 	@Test
 	public void testIsASingleton() throws Exception {
 		assertEquals(0, ThreeOfAKindResolver.class.getConstructors().length);
-		assertEquals(ThreeOfAKindResolver.class,
-				ThreeOfAKindResolver.SINGLETON.getClass());
+		TestHelper.assertIsOfTypeAndGet(ThreeOfAKindResolver.class,
+				ThreeOfAKindResolver.SINGLETON);
 	}
 
 	@Test
@@ -45,6 +46,7 @@ public class ThreeOfAKindResolverTest {
 		assertEquals(Winner.PLAYER_TWO,
 				ThreeOfAKindResolver.SINGLETON.resolve(hand1, hand2));
 	}
+
 	@Test
 	public void testPlayerOneWins_Kicker() throws Exception {
 		MockHand hand1 = new MockHand();
@@ -70,6 +72,7 @@ public class ThreeOfAKindResolverTest {
 		assertEquals(Winner.PLAYER_TWO,
 				ThreeOfAKindResolver.SINGLETON.resolve(hand1, hand2));
 	}
+
 	@Test
 	public void testTie() throws Exception {
 		MockHand hand1 = new MockHand();

@@ -1,19 +1,22 @@
 package com.model;
 
+import static com.TestHelper.assertIsOfInterface;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.TestHelper;
+
 public class NullCardTest {
 	@Test
 	public void testImplementsInterface() throws Exception {
-		assertEquals(CardInterface.class, NullCard.class.getInterfaces()[0]);
+		assertIsOfInterface(CardInterface.class, NullCard.class);
 	}
 
 	@Test
 	public void testIsSingleton() throws Exception {
 		assertEquals(0, NullCard.class.getConstructors().length);
-		assertEquals(NullCard.class, NullCard.NULL.getClass());
+		TestHelper.assertIsOfTypeAndGet(NullCard.class, NullCard.NULL);
 	}
 
 	@Test

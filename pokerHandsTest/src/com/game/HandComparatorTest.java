@@ -1,6 +1,7 @@
 package com.game;
 
 import static org.junit.Assert.assertEquals;
+import static com.TestHelper.*;
 
 import org.junit.Test;
 
@@ -11,8 +12,7 @@ public class HandComparatorTest {
 
 	@Test
 	public void testImplementsInterface() throws Exception {
-		assertEquals(HandComparatorInterface.class,
-				HandComparator.class.getInterfaces()[0]);
+		assertIsOfInterface(HandComparatorInterface.class, HandComparator.class);
 	}
 
 	@Test

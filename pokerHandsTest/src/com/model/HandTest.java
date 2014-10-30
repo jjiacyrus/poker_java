@@ -1,5 +1,6 @@
 package com.model;
 
+import static com.TestHelper.assertIsOfInterface;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -10,7 +11,7 @@ public class HandTest {
 
 	@Test
 	public void testImplementsInterface() throws Exception {
-		assertEquals(HandInterface.class, Hand.class.getInterfaces()[0]);
+		assertIsOfInterface(HandInterface.class, Hand.class);
 	}
 
 	@Test
@@ -139,7 +140,7 @@ public class HandTest {
 
 		assertTrue(hand.isStraight());
 	}
-	
+
 	@Test
 	public void testIsNotStraight() throws Exception {
 		Card card1 = new Card(Rank.FOUR, Suit.DIAMONDS);
@@ -152,7 +153,7 @@ public class HandTest {
 
 		assertFalse(hand.isStraight());
 	}
-	
+
 	@Test
 	public void testIsFlush() throws Exception {
 		Card card1 = new Card(Rank.FOUR, Suit.DIAMONDS);
@@ -165,7 +166,7 @@ public class HandTest {
 
 		assertTrue(hand.isFlush());
 	}
-	
+
 	@Test
 	public void testIsNotAFlush() throws Exception {
 		Card card1 = new Card(Rank.FOUR, Suit.DIAMONDS);
@@ -178,7 +179,7 @@ public class HandTest {
 
 		assertFalse(hand.isFlush());
 	}
-	
+
 	@Test
 	public void testGetKickerValue() throws Exception {
 		Card card1 = new Card(Rank.THREE, Suit.CLUBS);

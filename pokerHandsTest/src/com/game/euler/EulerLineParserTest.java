@@ -1,6 +1,7 @@
 package com.game.euler;
 
 import static org.junit.Assert.assertEquals;
+import static com.TestHelper.*;
 
 import org.junit.Test;
 
@@ -15,8 +16,7 @@ public class EulerLineParserTest {
 
 	@Test
 	public void testImplementsInterface() throws Exception {
-		assertEquals(LineParserInterface.class,
-				EulerLineParser.class.getInterfaces()[0]);
+		assertIsOfInterface(LineParserInterface.class, EulerLineParser.class);
 	}
 
 	@Test
@@ -36,14 +36,14 @@ public class EulerLineParserTest {
 		checkCard(Suit.HEARTS, Rank.NINE, hand1.getCards().get(2));
 		checkCard(Suit.SPADES, Rank.TEN, hand1.getCards().get(3));
 		checkCard(Suit.CLUBS, Rank.KING, hand1.getCards().get(4));
-		
+
 		checkCard(Suit.SPADES, Rank.TWO, hand2.getCards().get(0));
 		checkCard(Suit.SPADES, Rank.THREE, hand2.getCards().get(1));
 		checkCard(Suit.DIAMONDS, Rank.FIVE, hand2.getCards().get(2));
 		checkCard(Suit.DIAMONDS, Rank.SEVEN, hand2.getCards().get(3));
 		checkCard(Suit.CLUBS, Rank.ACE, hand2.getCards().get(4));
 	}
-	
+
 	@Test
 	public void testParseLineWhenThereAreNotEnoughCards() throws Exception {
 		String line = "8C TS KC 9H 7D 2S 5D 3S AC";
@@ -51,7 +51,7 @@ public class EulerLineParserTest {
 		TwoHandsInterface hands = eulerLineParser.parseLine(line);
 		assertEquals(NullTwoHands.NULL, hands);
 	}
-	
+
 	@Test
 	public void testParseLineWhenThereAreTooManyCards() throws Exception {
 		String line = "8C TS KC 9H 7D 2S 5D 3S AC 5D 8D 9D";
@@ -59,7 +59,6 @@ public class EulerLineParserTest {
 		TwoHandsInterface hands = eulerLineParser.parseLine(line);
 		assertEquals(NullTwoHands.NULL, hands);
 	}
-	
 
 	@Test
 	public void testUnparseableCardSuit() throws Exception {
@@ -68,7 +67,7 @@ public class EulerLineParserTest {
 		TwoHandsInterface hands = eulerLineParser.parseLine(line);
 		assertEquals(NullTwoHands.NULL, hands);
 	}
-	
+
 	@Test
 	public void testUnparseableCardRank() throws Exception {
 		String line = "8C TS KC 9H 4S 7D 2S VD 3S AC";
@@ -76,7 +75,6 @@ public class EulerLineParserTest {
 		TwoHandsInterface hands = eulerLineParser.parseLine(line);
 		assertEquals(NullTwoHands.NULL, hands);
 	}
-
 
 	private void checkCard(Suit suit, Rank rank, CardInterface card) {
 		assertEquals(new Card(rank, suit), card);

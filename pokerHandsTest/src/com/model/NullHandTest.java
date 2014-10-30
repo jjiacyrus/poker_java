@@ -1,20 +1,20 @@
 package com.model;
 
 import static org.junit.Assert.*;
-
+import static com.TestHelper.*;
 import org.junit.Test;
 
 public class NullHandTest {
 
 	@Test
 	public void testImplementsInterface() throws Exception {
-		assertEquals(HandInterface.class, NullHand.class.getInterfaces()[0]);
+		assertIsOfInterface(HandInterface.class, NullHand.class);
 	}
 
 	@Test
 	public void testIsSingleton() throws Exception {
 		assertEquals(0, NullHand.class.getConstructors().length);
-		assertEquals(NullHand.class, NullHand.NULL.getClass());
+		assertIsOfTypeAndGet(NullHand.class, NullHand.NULL);
 	}
 
 	@Test

@@ -1,6 +1,7 @@
 package com.game.euler;
 
 import static org.junit.Assert.assertEquals;
+import static com.TestHelper.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,8 +12,8 @@ public class EulerHandGeneratorTest {
 
 	@Test
 	public void testImplementsInterface() throws Exception {
-		assertEquals(HandGeneratorInterface.class,
-				EulerHandGenerator.class.getInterfaces()[0]);
+		assertIsOfInterface(HandGeneratorInterface.class,
+				EulerHandGenerator.class);
 	}
 
 	@Test

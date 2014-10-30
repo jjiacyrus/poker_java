@@ -1,5 +1,6 @@
 package com.model;
 
+import static com.TestHelper.assertIsOfInterface;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -32,35 +33,34 @@ public class RankTest {
 
 	@Test
 	public void testIsComparable() throws Exception {
-		assertEquals(Comparable.class, Rank.class.getInterfaces()[0]);
+		assertIsOfInterface(Comparable.class, Rank.class);
 	}
-	
+
 	@Test
 	public void testCompare() throws Exception {
 		assertEquals(-1, Rank.TWO.compareTo(Rank.THREE));
 		assertEquals(1, Rank.THREE.compareTo(Rank.TWO));
 		assertEquals(0, Rank.THREE.compareTo(Rank.THREE));
 	}
-	
+
 	@Test
-	public void testFindByAbbreviation() throws Exception{
-		assertEquals(Rank.TWO ,Rank.findByAbbreviation('2'));
-		assertEquals(Rank.THREE ,Rank.findByAbbreviation('3'));
-		assertEquals(Rank.FOUR ,Rank.findByAbbreviation('4'));
-		assertEquals(Rank.FIVE ,Rank.findByAbbreviation('5'));
-		assertEquals(Rank.SIX ,Rank.findByAbbreviation('6'));
-		assertEquals(Rank.SEVEN ,Rank.findByAbbreviation('7'));
-		assertEquals(Rank.EIGHT ,Rank.findByAbbreviation('8'));
-		assertEquals(Rank.NINE ,Rank.findByAbbreviation('9'));
-		assertEquals(Rank.TEN ,Rank.findByAbbreviation('T'));
-		assertEquals(Rank.JACK ,Rank.findByAbbreviation('J'));
-		assertEquals(Rank.QUEEN ,Rank.findByAbbreviation('Q'));
-		assertEquals(Rank.KING ,Rank.findByAbbreviation('K'));
-		assertEquals(Rank.ACE ,Rank.findByAbbreviation('A'));
-		assertEquals(Rank.NULL ,Rank.findByAbbreviation('Z'));
-		assertEquals(Rank.NULL ,Rank.findByAbbreviation('D'));
+	public void testFindByAbbreviation() throws Exception {
+		assertEquals(Rank.TWO, Rank.findByAbbreviation('2'));
+		assertEquals(Rank.THREE, Rank.findByAbbreviation('3'));
+		assertEquals(Rank.FOUR, Rank.findByAbbreviation('4'));
+		assertEquals(Rank.FIVE, Rank.findByAbbreviation('5'));
+		assertEquals(Rank.SIX, Rank.findByAbbreviation('6'));
+		assertEquals(Rank.SEVEN, Rank.findByAbbreviation('7'));
+		assertEquals(Rank.EIGHT, Rank.findByAbbreviation('8'));
+		assertEquals(Rank.NINE, Rank.findByAbbreviation('9'));
+		assertEquals(Rank.TEN, Rank.findByAbbreviation('T'));
+		assertEquals(Rank.JACK, Rank.findByAbbreviation('J'));
+		assertEquals(Rank.QUEEN, Rank.findByAbbreviation('Q'));
+		assertEquals(Rank.KING, Rank.findByAbbreviation('K'));
+		assertEquals(Rank.ACE, Rank.findByAbbreviation('A'));
+		assertEquals(Rank.NULL, Rank.findByAbbreviation('Z'));
+		assertEquals(Rank.NULL, Rank.findByAbbreviation('D'));
 
 	}
-	
-	
+
 }

@@ -1,5 +1,6 @@
 package com.model;
 
+import static com.TestHelper.assertIsOfInterface;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -7,7 +8,7 @@ import org.junit.Test;
 public class CardTest {
 	@Test
 	public void testImplementsInterface() throws Exception {
-		assertEquals(CardInterface.class, Card.class.getInterfaces()[0]);
+		assertIsOfInterface(CardInterface.class, Card.class);
 	}
 
 	@Test
